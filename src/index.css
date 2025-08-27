@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Jawad Ahmad Portfolio Design System - AI Engineer & Automation Specialist
+All colors MUST be HSL. Deep navy, electric blue, purple-to-blue gradients.
+*/
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 220 30% 6%;
+    --foreground: 220 15% 95%;
+    
+    /* AI-Inspired Color Palette */
+    --deep-navy: 220 50% 10%;
+    --electric-blue: 214 100% 65%;
+    --neural-purple: 270 80% 60%;
+    --cyber-teal: 185 100% 50%;
+    
+    /* Surface Colors */
+    --card: 220 25% 8%;
+    --card-foreground: 220 15% 95%;
+    --card-hover: 220 25% 12%;
+    
+    --popover: 220 25% 8%;
+    --popover-foreground: 220 15% 95%;
+    
+    /* Interactive Colors */
+    --primary: 214 100% 65%;
+    --primary-foreground: 220 30% 6%;
+    --primary-glow: 214 100% 75%;
+    
+    --secondary: 220 25% 12%;
+    --secondary-foreground: 220 15% 95%;
+    
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 60%;
+    
+    --accent: 270 80% 60%;
+    --accent-foreground: 220 15% 95%;
+    
+    /* Status Colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 220 15% 95%;
+    
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    
+    /* Form Elements */
+    --border: 220 20% 20%;
+    --input: 220 25% 12%;
+    --ring: 214 100% 65%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 65%), hsl(270 80% 60%));
+    --gradient-neural: linear-gradient(45deg, hsl(220 50% 10%), hsl(214 100% 65%), hsl(270 80% 60%));
+    --gradient-glow: radial-gradient(circle at center, hsl(214 100% 65% / 0.3), transparent 70%);
+    
+    /* Shadows & Effects */
+    --shadow-neural: 0 20px 60px hsl(214 100% 65% / 0.15);
+    --shadow-glow: 0 0 40px hsl(214 100% 65% / 0.4);
+    --shadow-card: 0 8px 32px hsl(220 30% 2% / 0.8);
+    
+    /* Border Radius */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* Neural Network Animations */
+  .neural-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-neural);
+    opacity: 0.05;
+    z-index: 0;
+  }
+  
+  .glow-effect {
+    position: relative;
+  }
+  
+  .glow-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    background: var(--gradient-glow);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    border-radius: 50%;
+  }
+  
+  .glow-effect:hover::after {
+    opacity: 1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--deep-navy));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary-glow));
+}
+
+/* Text Selection */
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+  }
+}
+
+@keyframes neural-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { border-right-color: transparent; }
+  51%, 100% { border-right-color: hsl(var(--primary)); }
+}
+
+/* Utility Classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-neural-pulse {
+  animation: neural-pulse 1.5s ease-in-out infinite;
+}
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient {
+  border-image: var(--gradient-primary) 1;
+}
+
+.card-glow:hover {
+  box-shadow: var(--shadow-neural);
+  transform: translateY(-4px);
+  transition: var(--transition-smooth);
+}
+
+.typewriter {
+  border-right: 2px solid hsl(var(--primary));
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typewriter 3s steps(30, end), blink 1s step-end infinite;
+}
